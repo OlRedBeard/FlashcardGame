@@ -21,13 +21,17 @@ namespace FatalFlashcards
             previousFrm = frm;
             gs = settings;
 
-            foreach (FlashcardSet set in settings.decks)
+            if (settings.decks != null)
             {
-                cboCardSet.Items.Add(set._title);
+                foreach (FlashcardSet set in settings.decks)
+                {
+                    cboCardSet.Items.Add(set._title);
+                }
+
+                if (cboCardSet.Items.Count > 0)
+                    cboCardSet.SelectedIndex = 0;
             }
 
-            if (cboCardSet.Items.Count < 1)
-                cboCardSet.SelectedIndex = 0;
         }
 
         private void lblClose_Click(object sender, EventArgs e)
@@ -46,6 +50,17 @@ namespace FatalFlashcards
         {
             UploadSet up = new UploadSet(gs);
             up.ShowDialog();
+
+            if (gs.decks != null)
+            {
+                foreach (FlashcardSet set in gs.decks)
+                {
+                    cboCardSet.Items.Add(set._title);
+                }
+
+                if (cboCardSet.Items.Count > 0)
+                    cboCardSet.SelectedIndex = 0;
+            }
         }
     }
 }

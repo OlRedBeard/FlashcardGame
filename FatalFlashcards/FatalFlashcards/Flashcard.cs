@@ -19,6 +19,8 @@ namespace FatalFlashcards
 
         public Flashcard(string line)
         {
+            _AllAnswers = new List<string>();
+
             string[] cols = line.Split("|");
 
             this._Question = cols[0];

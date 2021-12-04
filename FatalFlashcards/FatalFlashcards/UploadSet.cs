@@ -49,6 +49,8 @@ namespace FatalFlashcards
 
             if (newSet != null)
                 gs.decks.Add(newSet);
+
+            this.Close();
         }
     }
 }

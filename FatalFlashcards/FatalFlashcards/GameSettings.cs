@@ -9,7 +9,7 @@ namespace FatalFlashcards
     {
         private bool _Sound;
         private Form1 _previousFrm;
-        public List<FlashcardSet> decks;
+        public List<FlashcardSet> decks = new List<FlashcardSet>();
 
         public GameSettings(bool sound, Form1 prev)
         {
@@ -25,6 +25,7 @@ namespace FatalFlashcards
         public void MakeGame_Large()
         {
             GameMenuLarge menu = new GameMenuLarge(this, _previousFrm);
+            menu.ShowDialog();
         }
 
         public void MakeGame_Small()

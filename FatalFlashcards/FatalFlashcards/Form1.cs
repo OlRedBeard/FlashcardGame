@@ -35,7 +35,7 @@ namespace FatalFlashcards
             else
                 gs.MakeGame_Small();
 
-            this.Close();
+            this.Hide();
         }
 
         private void lblOptions_Click(object sender, EventArgs e)

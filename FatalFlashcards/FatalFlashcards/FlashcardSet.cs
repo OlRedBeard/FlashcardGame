@@ -9,7 +9,7 @@ namespace FatalFlashcards
     {
         Random rnd = new Random();
         public string _title;
-        public List<Flashcard> _flashcards;
+        public List<Flashcard> _flashcards = new List<Flashcard>();
 
         public FlashcardSet(string title)
         {
