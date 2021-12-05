@@ -11,6 +11,11 @@ namespace FatalFlashcards
         public string _title;
         public List<Flashcard> _flashcards = new List<Flashcard>();
 
+        //attributes for serialization
+        public int highScore;
+        public int shortestTimeElapsed;
+        public string fastestRun;
+
         public FlashcardSet(string title)
         {
             this._title = title;
@@ -23,16 +28,42 @@ namespace FatalFlashcards
 
         public void ShuffleCards(List<Flashcard> list)
         {
-            for(int i = 0; i < 1000; i++)
+            for(int i = 0; i < 10000; i++)
             {
                 int position1 = rnd.Next(1, this._flashcards.Count);
                 int position2 = rnd.Next(1, this._flashcards.Count);
+
+                Flashcard tmp = this._flashcards[position1];
+                this._flashcards[position1] = this._flashcards[position2];
+                this._flashcards[position2] = tmp;
             }
         }
 
         public void ChangeTitle(string newTitle)
         {
             this._title = newTitle;
+        }
+
+        public void SetHighScore(int score)
+        {
+            if (score > this.highScore)
+                this.highScore = score;
+        }
+
+        public void SetFastestRun(int timeElapsed)
+        {
+            if (timeElapsed < this.shortestTimeElapsed)
+            {
+                int minutes = timeElapsed / 60;
+                int seconds = timeElapsed % 60;
+
+                this.fastestRun = minutes.ToString() + ":" + seconds.ToString();
+            }
+        }
+
+        public override string ToString()
+        {
+            return this._title;
         }
     }
 }

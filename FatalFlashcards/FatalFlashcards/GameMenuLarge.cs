@@ -13,6 +13,7 @@ namespace FatalFlashcards
         public bool sound;
         Form1 previousFrm;
         GameSettings gs;
+        FlashcardSet set;
 
         public GameMenuLarge(GameSettings settings, Form1 frm)
         {
@@ -25,11 +26,33 @@ namespace FatalFlashcards
             {
                 foreach (FlashcardSet set in settings.decks)
                 {
-                    cboCardSet.Items.Add(set._title);
+                    cboCardSet.Items.Add(set);
                 }
 
                 if (cboCardSet.Items.Count > 0)
                     cboCardSet.SelectedIndex = 0;
+
+                if (cboCardSet.SelectedItem != null)
+                {
+                    set = (FlashcardSet)cboCardSet.SelectedItem;
+
+                    lblBestPoints.Visible = true;
+                    lblPoints.Visible = true;
+                    if (set.highScore > 0)
+                        lblPoints.Text = set.highScore.ToString();
+                    else
+                        lblPoints.Text = "N/A";
+
+                    lblBestSpeed.Visible = true;
+                    lblSpeed.Visible = true;
+                }
+                else
+                {
+                    lblBestPoints.Visible = false;
+                    lblPoints.Visible = false;
+                    lblBestSpeed.Visible = false;
+                    lblSpeed.Visible = false;
+                }
             }
 
         }
@@ -61,6 +84,20 @@ namespace FatalFlashcards
                 if (cboCardSet.Items.Count > 0)
                     cboCardSet.SelectedIndex = 0;
             }
+        }
+
+        private void cboCardSet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            set = (FlashcardSet)cboCardSet.SelectedItem;
+            lblBestPoints.Visible = true;
+            lblPoints.Visible = true;
+            if (set.highScore > 0)
+                lblPoints.Text = set.highScore.ToString();
+            else
+                lblPoints.Text = "N/A";
+
+            lblBestSpeed.Visible = true;
+            lblSpeed.Visible = true;
         }
     }
 }

@@ -34,7 +34,6 @@ namespace FatalFlashcards
             this.cboCardSet = new System.Windows.Forms.ComboBox();
             this.lblPlay = new System.Windows.Forms.Label();
             this.lblAddCards = new System.Windows.Forms.Label();
-            this.lblGameTutorial = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblBestPoints = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@ namespace FatalFlashcards
             this.cboCardSet.Name = "cboCardSet";
             this.cboCardSet.Size = new System.Drawing.Size(253, 48);
             this.cboCardSet.TabIndex = 7;
+            this.cboCardSet.SelectedIndexChanged += new System.EventHandler(this.cboCardSet_SelectedIndexChanged);
             // 
             // lblPlay
             // 
@@ -97,25 +97,13 @@ namespace FatalFlashcards
             this.lblAddCards.AutoSize = true;
             this.lblAddCards.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAddCards.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblAddCards.Location = new System.Drawing.Point(647, 563);
+            this.lblAddCards.Location = new System.Drawing.Point(647, 443);
             this.lblAddCards.Name = "lblAddCards";
             this.lblAddCards.Size = new System.Drawing.Size(374, 40);
             this.lblAddCards.TabIndex = 9;
             this.lblAddCards.Text = "Add Flashcard Set";
             this.lblAddCards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAddCards.Click += new System.EventHandler(this.lblAddCards_Click);
-            // 
-            // lblGameTutorial
-            // 
-            this.lblGameTutorial.AutoSize = true;
-            this.lblGameTutorial.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblGameTutorial.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblGameTutorial.Location = new System.Drawing.Point(647, 443);
-            this.lblGameTutorial.Name = "lblGameTutorial";
-            this.lblGameTutorial.Size = new System.Drawing.Size(416, 40);
-            this.lblGameTutorial.TabIndex = 10;
-            this.lblGameTutorial.Text = "Watch Game Tutorial";
-            this.lblGameTutorial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -124,9 +112,9 @@ namespace FatalFlashcards
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
             this.label1.Location = new System.Drawing.Point(647, 503);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 40);
+            this.label1.Size = new System.Drawing.Size(395, 40);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Upload Tutorial";
+            this.label1.Text = "How to Upload Sets";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -194,7 +182,7 @@ namespace FatalFlashcards
             this.lblQuit.AutoSize = true;
             this.lblQuit.Font = new System.Drawing.Font("Courier New", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblQuit.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblQuit.Location = new System.Drawing.Point(647, 623);
+            this.lblQuit.Location = new System.Drawing.Point(647, 563);
             this.lblQuit.Name = "lblQuit";
             this.lblQuit.Size = new System.Drawing.Size(332, 40);
             this.lblQuit.TabIndex = 17;
@@ -215,7 +203,6 @@ namespace FatalFlashcards
             this.Controls.Add(this.lblBestPoints);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblGameTutorial);
             this.Controls.Add(this.lblAddCards);
             this.Controls.Add(this.lblPlay);
             this.Controls.Add(this.cboCardSet);
@@ -237,7 +224,6 @@ namespace FatalFlashcards
         private System.Windows.Forms.ComboBox cboCardSet;
         private System.Windows.Forms.Label lblPlay;
         private System.Windows.Forms.Label lblAddCards;
-        private System.Windows.Forms.Label lblGameTutorial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblBestPoints;

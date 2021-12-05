@@ -30,14 +30,14 @@ namespace FatalFlashcards
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblConfirm = new System.Windows.Forms.Label();
+            this.lblCancel = new System.Windows.Forms.Label();
+            this.lblFilepath = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnUpload = new System.Windows.Forms.Button();
-            this.txtTitle = new System.Windows.Forms.TextBox();
-            this.lblFilepath = new System.Windows.Forms.Label();
-            this.lblCancel = new System.Windows.Forms.Label();
-            this.lblConfirm = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,78 @@ namespace FatalFlashcards
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(780, 430);
             this.panel1.TabIndex = 0;
+            // 
+            // lblConfirm
+            // 
+            this.lblConfirm.AutoSize = true;
+            this.lblConfirm.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblConfirm.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblConfirm.Location = new System.Drawing.Point(480, 340);
+            this.lblConfirm.Name = "lblConfirm";
+            this.lblConfirm.Size = new System.Drawing.Size(134, 33);
+            this.lblConfirm.TabIndex = 8;
+            this.lblConfirm.Text = "Confirm";
+            this.lblConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblConfirm.Click += new System.EventHandler(this.lblConfirm_Click);
+            // 
+            // lblCancel
+            // 
+            this.lblCancel.AutoSize = true;
+            this.lblCancel.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCancel.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblCancel.Location = new System.Drawing.Point(167, 340);
+            this.lblCancel.Name = "lblCancel";
+            this.lblCancel.Size = new System.Drawing.Size(117, 33);
+            this.lblCancel.TabIndex = 7;
+            this.lblCancel.Text = "Cancel";
+            this.lblCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCancel.Click += new System.EventHandler(this.lblCancel_Click);
+            // 
+            // lblFilepath
+            // 
+            this.lblFilepath.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblFilepath.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblFilepath.Location = new System.Drawing.Point(3, 292);
+            this.lblFilepath.Name = "lblFilepath";
+            this.lblFilepath.Size = new System.Drawing.Size(774, 33);
+            this.lblFilepath.TabIndex = 6;
+            this.lblFilepath.Text = "No File Selected";
+            this.lblFilepath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.BackColor = System.Drawing.SystemColors.WindowText;
+            this.txtTitle.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtTitle.ForeColor = System.Drawing.SystemColors.Window;
+            this.txtTitle.Location = new System.Drawing.Point(353, 159);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(261, 40);
+            this.txtTitle.TabIndex = 5;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.AutoSize = true;
+            this.btnUpload.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpload.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnUpload.Location = new System.Drawing.Point(402, 226);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(212, 43);
+            this.btnUpload.TabIndex = 4;
+            this.btnUpload.Text = "Select File";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.Window;
+            this.label3.Location = new System.Drawing.Point(167, 231);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(219, 33);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Upload File:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -80,77 +152,6 @@ namespace FatalFlashcards
             this.label1.Text = "Upload Set";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.SystemColors.Window;
-            this.label3.Location = new System.Drawing.Point(167, 231);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(219, 33);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Upload File:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnUpload
-            // 
-            this.btnUpload.AutoSize = true;
-            this.btnUpload.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpload.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnUpload.Location = new System.Drawing.Point(402, 226);
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(212, 43);
-            this.btnUpload.TabIndex = 4;
-            this.btnUpload.Text = "Select File";
-            this.btnUpload.UseVisualStyleBackColor = true;
-            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
-            // 
-            // txtTitle
-            // 
-            this.txtTitle.BackColor = System.Drawing.SystemColors.WindowText;
-            this.txtTitle.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtTitle.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtTitle.Location = new System.Drawing.Point(353, 159);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(261, 40);
-            this.txtTitle.TabIndex = 5;
-            // 
-            // lblFilepath
-            // 
-            this.lblFilepath.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblFilepath.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblFilepath.Location = new System.Drawing.Point(3, 292);
-            this.lblFilepath.Name = "lblFilepath";
-            this.lblFilepath.Size = new System.Drawing.Size(774, 33);
-            this.lblFilepath.TabIndex = 6;
-            this.lblFilepath.Text = "No File Selected";
-            this.lblFilepath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCancel
-            // 
-            this.lblCancel.AutoSize = true;
-            this.lblCancel.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCancel.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblCancel.Location = new System.Drawing.Point(167, 340);
-            this.lblCancel.Name = "lblCancel";
-            this.lblCancel.Size = new System.Drawing.Size(117, 33);
-            this.lblCancel.TabIndex = 7;
-            this.lblCancel.Text = "Cancel";
-            this.lblCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblConfirm
-            // 
-            this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblConfirm.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblConfirm.Location = new System.Drawing.Point(480, 340);
-            this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(134, 33);
-            this.lblConfirm.TabIndex = 8;
-            this.lblConfirm.Text = "Confirm";
-            this.lblConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblConfirm.Click += new System.EventHandler(this.lblConfirm_Click);
-            // 
             // UploadSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -160,6 +161,7 @@ namespace FatalFlashcards
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UploadSet";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UploadSet";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

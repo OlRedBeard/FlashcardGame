@@ -52,5 +52,10 @@ namespace FatalFlashcards
 
             this.Close();
         }
+
+        private void lblCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
