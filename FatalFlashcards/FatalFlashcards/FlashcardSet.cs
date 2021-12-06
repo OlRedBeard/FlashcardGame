@@ -7,14 +7,18 @@ namespace FatalFlashcards
     [Serializable]
     public class FlashcardSet
     {
-        Random rnd = new Random();
+        static Random rnd = new Random();
         public string _title;
         public List<Flashcard> _flashcards = new List<Flashcard>();
+
+        //draw & done lists for progress info
+        public List<Flashcard> _drawPile = new List<Flashcard>();
+        public List<Flashcard> _donePile = new List<Flashcard>();
 
         //attributes for serialization
         public int highScore;
         public int shortestTimeElapsed;
-        public string fastestRun;
+        public string fastestRun = null;
 
         public FlashcardSet(string title)
         {
@@ -59,6 +63,37 @@ namespace FatalFlashcards
 
                 this.fastestRun = minutes.ToString() + ":" + seconds.ToString();
             }
+        }
+
+        public void PrepCards()
+        {
+            foreach (Flashcard card in this._flashcards)
+            {
+                this._drawPile.Add(card);
+            }
+        }
+
+        public Flashcard DealCard()
+        {
+            Flashcard tmp = null;
+
+            if (this._drawPile.Count > 0)
+            {
+                tmp = this._drawPile[0];
+                this._drawPile.RemoveAt(0);
+            }
+
+            return tmp;
+        }
+
+        public void DoneCard(Flashcard card)
+        {
+            this._donePile.Add(card);
+        }
+
+        public int CardsRemaining()
+        {
+            return this._drawPile.Count;
         }
 
         public override string ToString()

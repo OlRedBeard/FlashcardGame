@@ -8,13 +8,13 @@ namespace FatalFlashcards
     public class GameSettings
     {
         private bool _Sound;
-        private Form1 _previousFrm;
+        private bool _Large;
+        //private Form1 _previousFrm;
         public List<FlashcardSet> decks = new List<FlashcardSet>();
 
-        public GameSettings(bool sound, Form1 prev)
+        public GameSettings(bool sound)
         {
             this._Sound = sound;
-            this._previousFrm = prev;
         }
 
         public bool getSound()
@@ -22,15 +22,21 @@ namespace FatalFlashcards
             return this._Sound;
         }
 
+        public bool getSize()
+        {
+            return this._Large;
+        }
+
         public void MakeGame_Large()
         {
-            GameMenuLarge menu = new GameMenuLarge(this, _previousFrm);
+            this._Large = true;
+            GameMenuLarge menu = new GameMenuLarge(this);
             menu.ShowDialog();
         }
 
         public void MakeGame_Small()
         {
-
+            this._Large = false;
         }
 
         public void AddSet(FlashcardSet tmp)

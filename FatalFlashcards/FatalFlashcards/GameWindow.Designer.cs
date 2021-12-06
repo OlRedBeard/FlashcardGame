@@ -36,16 +36,17 @@ namespace FatalFlashcards
             this.lblQuestion = new System.Windows.Forms.Label();
             this.pnlAnswerBack = new System.Windows.Forms.Panel();
             this.pnlAnswerFront = new System.Windows.Forms.Panel();
+            this.lblOptionD = new System.Windows.Forms.Label();
+            this.lblOptionC = new System.Windows.Forms.Label();
+            this.lblOptionB = new System.Windows.Forms.Label();
+            this.lblOptionA = new System.Windows.Forms.Label();
+            this.lblD = new System.Windows.Forms.Label();
+            this.lblC = new System.Windows.Forms.Label();
+            this.lblB = new System.Windows.Forms.Label();
             this.lblA = new System.Windows.Forms.Label();
             this.prgTime = new System.Windows.Forms.ProgressBar();
-            this.lblB = new System.Windows.Forms.Label();
-            this.lblC = new System.Windows.Forms.Label();
-            this.lblD = new System.Windows.Forms.Label();
             this.lblPoints = new System.Windows.Forms.Label();
-            this.lblOptionA = new System.Windows.Forms.Label();
-            this.lblOptionB = new System.Windows.Forms.Label();
-            this.lblOptionC = new System.Windows.Forms.Label();
-            this.lblOptionD = new System.Windows.Forms.Label();
+            this.lblContinue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLife)).BeginInit();
             this.pnlAnswerBack.SuspendLayout();
             this.pnlAnswerFront.SuspendLayout();
@@ -108,6 +109,7 @@ namespace FatalFlashcards
             // pnlAnswerFront
             // 
             this.pnlAnswerFront.BackColor = System.Drawing.SystemColors.WindowText;
+            this.pnlAnswerFront.Controls.Add(this.lblContinue);
             this.pnlAnswerFront.Controls.Add(this.lblOptionD);
             this.pnlAnswerFront.Controls.Add(this.lblOptionC);
             this.pnlAnswerFront.Controls.Add(this.lblOptionB);
@@ -120,6 +122,90 @@ namespace FatalFlashcards
             this.pnlAnswerFront.Name = "pnlAnswerFront";
             this.pnlAnswerFront.Size = new System.Drawing.Size(1520, 330);
             this.pnlAnswerFront.TabIndex = 0;
+            // 
+            // lblOptionD
+            // 
+            this.lblOptionD.AutoSize = true;
+            this.lblOptionD.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblOptionD.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblOptionD.Location = new System.Drawing.Point(125, 246);
+            this.lblOptionD.Name = "lblOptionD";
+            this.lblOptionD.Size = new System.Drawing.Size(230, 49);
+            this.lblOptionD.TabIndex = 22;
+            this.lblOptionD.Text = "Answer D";
+            this.lblOptionD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblOptionC
+            // 
+            this.lblOptionC.AutoSize = true;
+            this.lblOptionC.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblOptionC.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblOptionC.Location = new System.Drawing.Point(125, 176);
+            this.lblOptionC.Name = "lblOptionC";
+            this.lblOptionC.Size = new System.Drawing.Size(230, 49);
+            this.lblOptionC.TabIndex = 21;
+            this.lblOptionC.Text = "Answer C";
+            this.lblOptionC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblOptionB
+            // 
+            this.lblOptionB.AutoSize = true;
+            this.lblOptionB.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblOptionB.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblOptionB.Location = new System.Drawing.Point(125, 106);
+            this.lblOptionB.Name = "lblOptionB";
+            this.lblOptionB.Size = new System.Drawing.Size(230, 49);
+            this.lblOptionB.TabIndex = 20;
+            this.lblOptionB.Text = "Answer B";
+            this.lblOptionB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblOptionA
+            // 
+            this.lblOptionA.AutoSize = true;
+            this.lblOptionA.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblOptionA.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblOptionA.Location = new System.Drawing.Point(125, 36);
+            this.lblOptionA.Name = "lblOptionA";
+            this.lblOptionA.Size = new System.Drawing.Size(230, 49);
+            this.lblOptionA.TabIndex = 19;
+            this.lblOptionA.Text = "Answer A";
+            this.lblOptionA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblD
+            // 
+            this.lblD.AutoSize = true;
+            this.lblD.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblD.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblD.Location = new System.Drawing.Point(45, 246);
+            this.lblD.Name = "lblD";
+            this.lblD.Size = new System.Drawing.Size(74, 49);
+            this.lblD.TabIndex = 18;
+            this.lblD.Text = "D)";
+            this.lblD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblC
+            // 
+            this.lblC.AutoSize = true;
+            this.lblC.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblC.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblC.Location = new System.Drawing.Point(45, 176);
+            this.lblC.Name = "lblC";
+            this.lblC.Size = new System.Drawing.Size(74, 49);
+            this.lblC.TabIndex = 17;
+            this.lblC.Text = "C)";
+            this.lblC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblB
+            // 
+            this.lblB.AutoSize = true;
+            this.lblB.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblB.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblB.Location = new System.Drawing.Point(45, 106);
+            this.lblB.Name = "lblB";
+            this.lblB.Size = new System.Drawing.Size(74, 49);
+            this.lblB.TabIndex = 16;
+            this.lblB.Text = "B)";
+            this.lblB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblA
             // 
@@ -144,42 +230,6 @@ namespace FatalFlashcards
             this.prgTime.TabIndex = 15;
             this.prgTime.Value = 450;
             // 
-            // lblB
-            // 
-            this.lblB.AutoSize = true;
-            this.lblB.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblB.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblB.Location = new System.Drawing.Point(45, 106);
-            this.lblB.Name = "lblB";
-            this.lblB.Size = new System.Drawing.Size(74, 49);
-            this.lblB.TabIndex = 16;
-            this.lblB.Text = "B)";
-            this.lblB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblC
-            // 
-            this.lblC.AutoSize = true;
-            this.lblC.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblC.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblC.Location = new System.Drawing.Point(45, 176);
-            this.lblC.Name = "lblC";
-            this.lblC.Size = new System.Drawing.Size(74, 49);
-            this.lblC.TabIndex = 17;
-            this.lblC.Text = "C)";
-            this.lblC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblD
-            // 
-            this.lblD.AutoSize = true;
-            this.lblD.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblD.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblD.Location = new System.Drawing.Point(45, 246);
-            this.lblD.Name = "lblD";
-            this.lblD.Size = new System.Drawing.Size(74, 49);
-            this.lblD.TabIndex = 18;
-            this.lblD.Text = "D)";
-            this.lblD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lblPoints
             // 
             this.lblPoints.Font = new System.Drawing.Font("Courier New", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -191,53 +241,16 @@ namespace FatalFlashcards
             this.lblPoints.Text = "0";
             this.lblPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblOptionA
+            // lblContinue
             // 
-            this.lblOptionA.AutoSize = true;
-            this.lblOptionA.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOptionA.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblOptionA.Location = new System.Drawing.Point(125, 36);
-            this.lblOptionA.Name = "lblOptionA";
-            this.lblOptionA.Size = new System.Drawing.Size(230, 49);
-            this.lblOptionA.TabIndex = 19;
-            this.lblOptionA.Text = "Answer A";
-            this.lblOptionA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblOptionB
-            // 
-            this.lblOptionB.AutoSize = true;
-            this.lblOptionB.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOptionB.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblOptionB.Location = new System.Drawing.Point(125, 106);
-            this.lblOptionB.Name = "lblOptionB";
-            this.lblOptionB.Size = new System.Drawing.Size(230, 49);
-            this.lblOptionB.TabIndex = 20;
-            this.lblOptionB.Text = "Answer B";
-            this.lblOptionB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblOptionC
-            // 
-            this.lblOptionC.AutoSize = true;
-            this.lblOptionC.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOptionC.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblOptionC.Location = new System.Drawing.Point(125, 176);
-            this.lblOptionC.Name = "lblOptionC";
-            this.lblOptionC.Size = new System.Drawing.Size(230, 49);
-            this.lblOptionC.TabIndex = 21;
-            this.lblOptionC.Text = "Answer C";
-            this.lblOptionC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblOptionD
-            // 
-            this.lblOptionD.AutoSize = true;
-            this.lblOptionD.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOptionD.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblOptionD.Location = new System.Drawing.Point(125, 246);
-            this.lblOptionD.Name = "lblOptionD";
-            this.lblOptionD.Size = new System.Drawing.Size(230, 49);
-            this.lblOptionD.TabIndex = 22;
-            this.lblOptionD.Text = "Answer D";
-            this.lblOptionD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblContinue.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblContinue.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblContinue.Location = new System.Drawing.Point(1151, 246);
+            this.lblContinue.Name = "lblContinue";
+            this.lblContinue.Size = new System.Drawing.Size(339, 49);
+            this.lblContinue.TabIndex = 23;
+            this.lblContinue.Text = " Next Card >";
+            this.lblContinue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // GameWindow
             // 
@@ -283,5 +296,6 @@ namespace FatalFlashcards
         private System.Windows.Forms.Label lblOptionD;
         private System.Windows.Forms.Label lblOptionC;
         private System.Windows.Forms.Label lblOptionB;
+        private System.Windows.Forms.Label lblContinue;
     }
 }

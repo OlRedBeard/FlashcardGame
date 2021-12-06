@@ -27,13 +27,6 @@ namespace FatalFlashcards
             }
 
             deck.ShuffleCards(deck._flashcards);
-
-            picLife.Visible = false;
-            lblPoints.Visible = false;
-            lblQuestion.Text = "Would you like a brief tutorial?";
-            lblOptionA.Text = "Yes";
-            lblOptionB.Text = "No";
-
         }
     }
 }

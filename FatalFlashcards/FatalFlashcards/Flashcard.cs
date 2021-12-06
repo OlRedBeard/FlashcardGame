@@ -7,7 +7,7 @@ namespace FatalFlashcards
     [Serializable]
     public class Flashcard
     {
-        Random rnd = new Random();
+        static Random rnd = new Random();
 
         private string _Question;
         private string _CorrectAnswer;

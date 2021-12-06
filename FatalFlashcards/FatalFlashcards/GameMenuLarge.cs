@@ -5,22 +5,35 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+//file system
+using System.IO;
+//binary formatter
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FatalFlashcards
 {
     public partial class GameMenuLarge : Form
     {
         public bool sound;
-        Form1 previousFrm;
+        //Form1 previousFrm;
         GameSettings gs;
         FlashcardSet set;
 
-        public GameMenuLarge(GameSettings settings, Form1 frm)
+        public GameMenuLarge(GameSettings settings)//, Form1 frm)
         {
             InitializeComponent();
             sound = settings.getSound();
-            previousFrm = frm;
+            //previousFrm = frm;
             gs = settings;
+
+            //save game settings for next time
+            using (Stream stream = File.Open("settings.bin", FileMode.Create))
+            {
+                BinaryFormatter bin = new BinaryFormatter();
+                bin.Serialize(stream, gs);
+                //for testing
+                MessageBox.Show("Game Settings Saved");
+            }
 
             if (settings.decks != null)
             {
@@ -45,6 +58,10 @@ namespace FatalFlashcards
 
                     lblBestSpeed.Visible = true;
                     lblSpeed.Visible = true;
+                    if (set.fastestRun != null)
+                        lblSpeed.Text = "NOT COMPLETE";
+                    else
+                        lblSpeed.Text = "N/A";
                 }
                 else
                 {
@@ -60,13 +77,13 @@ namespace FatalFlashcards
         private void lblClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            previousFrm.Show();
+            //previousFrm.Show();
         }
 
         private void lblQuit_Click(object sender, EventArgs e)
         {
             this.Close();
-            previousFrm.Close();
+            //previousFrm.Close();
         }
 
         private void lblAddCards_Click(object sender, EventArgs e)
@@ -78,26 +95,43 @@ namespace FatalFlashcards
             {
                 foreach (FlashcardSet set in gs.decks)
                 {
-                    cboCardSet.Items.Add(set._title);
+                    cboCardSet.Items.Add(set);
                 }
 
                 if (cboCardSet.Items.Count > 0)
                     cboCardSet.SelectedIndex = 0;
             }
+
+            //save game settings for next time
+            using (Stream stream = File.Open("settings.bin", FileMode.Create))
+            {
+                BinaryFormatter bin = new BinaryFormatter();
+                bin.Serialize(stream, gs);
+                //for testing
+                MessageBox.Show("Game Settings Saved");
+            }
         }
 
         private void cboCardSet_SelectedIndexChanged(object sender, EventArgs e)
         {
-            set = (FlashcardSet)cboCardSet.SelectedItem;
-            lblBestPoints.Visible = true;
-            lblPoints.Visible = true;
-            if (set.highScore > 0)
-                lblPoints.Text = set.highScore.ToString();
-            else
-                lblPoints.Text = "N/A";
+            try
+            {
+                set = (FlashcardSet)cboCardSet.SelectedItem;
+                lblBestPoints.Visible = true;
+                lblPoints.Visible = true;
+                if (set.highScore > 0)
+                    lblPoints.Text = set.highScore.ToString();
+                else
+                    lblPoints.Text = "N/A";
 
-            lblBestSpeed.Visible = true;
-            lblSpeed.Visible = true;
+                lblBestSpeed.Visible = true;
+                lblSpeed.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                //for testing
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
