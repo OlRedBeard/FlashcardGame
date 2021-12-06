@@ -133,5 +133,24 @@ namespace FatalFlashcards
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void lblPlay_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            GameWindow game = new GameWindow(gs, this, set);
+            game.ShowDialog();
+        }
+
+        private void HoverText(object sender, EventArgs e)
+        {
+            Label tmp = (Label)sender;
+            tmp.ForeColor = Color.Red;
+        }
+
+        private void LeaveText(object sender, EventArgs e)
+        {
+            Label tmp = (Label)sender;
+            tmp.ForeColor = Color.White;
+        }
     }
 }

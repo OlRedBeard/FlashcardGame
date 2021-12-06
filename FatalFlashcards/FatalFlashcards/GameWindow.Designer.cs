@@ -29,6 +29,7 @@ namespace FatalFlashcards
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameWindow));
             this.lblClose = new System.Windows.Forms.Label();
             this.picLife = new System.Windows.Forms.PictureBox();
@@ -36,6 +37,7 @@ namespace FatalFlashcards
             this.lblQuestion = new System.Windows.Forms.Label();
             this.pnlAnswerBack = new System.Windows.Forms.Panel();
             this.pnlAnswerFront = new System.Windows.Forms.Panel();
+            this.lblContinue = new System.Windows.Forms.Label();
             this.lblOptionD = new System.Windows.Forms.Label();
             this.lblOptionC = new System.Windows.Forms.Label();
             this.lblOptionB = new System.Windows.Forms.Label();
@@ -46,8 +48,10 @@ namespace FatalFlashcards
             this.lblA = new System.Windows.Forms.Label();
             this.prgTime = new System.Windows.Forms.ProgressBar();
             this.lblPoints = new System.Windows.Forms.Label();
-            this.lblContinue = new System.Windows.Forms.Label();
             this.lblRightWrong = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblWinLose = new System.Windows.Forms.Label();
+            this.lblStats = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLife)).BeginInit();
             this.pnlAnswerBack.SuspendLayout();
             this.pnlAnswerFront.SuspendLayout();
@@ -110,6 +114,8 @@ namespace FatalFlashcards
             // pnlAnswerFront
             // 
             this.pnlAnswerFront.BackColor = System.Drawing.SystemColors.WindowText;
+            this.pnlAnswerFront.Controls.Add(this.lblStats);
+            this.pnlAnswerFront.Controls.Add(this.lblWinLose);
             this.pnlAnswerFront.Controls.Add(this.lblContinue);
             this.pnlAnswerFront.Controls.Add(this.lblOptionD);
             this.pnlAnswerFront.Controls.Add(this.lblOptionC);
@@ -123,6 +129,18 @@ namespace FatalFlashcards
             this.pnlAnswerFront.Name = "pnlAnswerFront";
             this.pnlAnswerFront.Size = new System.Drawing.Size(1520, 330);
             this.pnlAnswerFront.TabIndex = 0;
+            // 
+            // lblContinue
+            // 
+            this.lblContinue.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblContinue.ForeColor = System.Drawing.Color.Gold;
+            this.lblContinue.Location = new System.Drawing.Point(1151, 246);
+            this.lblContinue.Name = "lblContinue";
+            this.lblContinue.Size = new System.Drawing.Size(339, 49);
+            this.lblContinue.TabIndex = 23;
+            this.lblContinue.Text = " Next Card >";
+            this.lblContinue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblContinue.Click += new System.EventHandler(this.lblContinue_Click);
             // 
             // lblOptionD
             // 
@@ -246,18 +264,6 @@ namespace FatalFlashcards
             this.lblPoints.Text = "0";
             this.lblPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblContinue
-            // 
-            this.lblContinue.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblContinue.ForeColor = System.Drawing.Color.Gold;
-            this.lblContinue.Location = new System.Drawing.Point(1151, 246);
-            this.lblContinue.Name = "lblContinue";
-            this.lblContinue.Size = new System.Drawing.Size(339, 49);
-            this.lblContinue.TabIndex = 23;
-            this.lblContinue.Text = " Next Card >";
-            this.lblContinue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblContinue.Click += new System.EventHandler(this.lblContinue_Click);
-            // 
             // lblRightWrong
             // 
             this.lblRightWrong.Font = new System.Drawing.Font("Courier New", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -269,6 +275,35 @@ namespace FatalFlashcards
             this.lblRightWrong.Text = "Incorrect";
             this.lblRightWrong.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRightWrong.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblWinLose
+            // 
+            this.lblWinLose.Font = new System.Drawing.Font("Courier New", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblWinLose.ForeColor = System.Drawing.Color.Red;
+            this.lblWinLose.Location = new System.Drawing.Point(360, 91);
+            this.lblWinLose.Name = "lblWinLose";
+            this.lblWinLose.Size = new System.Drawing.Size(800, 78);
+            this.lblWinLose.TabIndex = 25;
+            this.lblWinLose.Text = "You Died";
+            this.lblWinLose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblWinLose.Visible = false;
+            // 
+            // lblStats
+            // 
+            this.lblStats.Font = new System.Drawing.Font("Courier New", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblStats.ForeColor = System.Drawing.Color.White;
+            this.lblStats.Location = new System.Drawing.Point(360, 172);
+            this.lblStats.Name = "lblStats";
+            this.lblStats.Size = new System.Drawing.Size(800, 42);
+            this.lblStats.TabIndex = 26;
+            this.lblStats.Text = "View Run Stats";
+            this.lblStats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStats.Visible = false;
             // 
             // GameWindow
             // 
@@ -287,6 +322,7 @@ namespace FatalFlashcards
             this.ForeColor = System.Drawing.SystemColors.Window;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameWindow";
             ((System.ComponentModel.ISupportInitialize)(this.picLife)).EndInit();
             this.pnlAnswerBack.ResumeLayout(false);
@@ -317,5 +353,8 @@ namespace FatalFlashcards
         private System.Windows.Forms.Label lblOptionB;
         private System.Windows.Forms.Label lblContinue;
         private System.Windows.Forms.Label lblRightWrong;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblStats;
+        private System.Windows.Forms.Label lblWinLose;
     }
 }

@@ -91,6 +91,9 @@ namespace FatalFlashcards
             this.lblPlay.TabIndex = 8;
             this.lblPlay.Text = "Begin";
             this.lblPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPlay.Click += new System.EventHandler(this.lblPlay_Click);
+            this.lblPlay.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblPlay.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblAddCards
             // 
@@ -104,6 +107,8 @@ namespace FatalFlashcards
             this.lblAddCards.Text = "Add Flashcard Set";
             this.lblAddCards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAddCards.Click += new System.EventHandler(this.lblAddCards_Click);
+            this.lblAddCards.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblAddCards.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // label1
             // 
@@ -116,6 +121,8 @@ namespace FatalFlashcards
             this.label1.TabIndex = 11;
             this.label1.Text = "How to Upload Sets";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.label1.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // label2
             // 
@@ -184,11 +191,13 @@ namespace FatalFlashcards
             this.lblQuit.ForeColor = System.Drawing.SystemColors.Window;
             this.lblQuit.Location = new System.Drawing.Point(647, 563);
             this.lblQuit.Name = "lblQuit";
-            this.lblQuit.Size = new System.Drawing.Size(332, 40);
+            this.lblQuit.Size = new System.Drawing.Size(206, 40);
             this.lblQuit.TabIndex = 17;
-            this.lblQuit.Text = "Quit to Desktop";
+            this.lblQuit.Text = "Quit Game";
             this.lblQuit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblQuit.Click += new System.EventHandler(this.lblQuit_Click);
+            this.lblQuit.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblQuit.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // GameMenuLarge
             // 

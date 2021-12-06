@@ -12,17 +12,19 @@ namespace FatalFlashcards
         public List<Flashcard> _flashcards = new List<Flashcard>();
 
         //draw & done lists for progress info
-        public List<Flashcard> _drawPile = new List<Flashcard>();
+        public List<Flashcard> _drawPile;
         public List<Flashcard> _donePile = new List<Flashcard>();
 
         //attributes for serialization
         public int highScore;
+        public int currScore;
         public int shortestTimeElapsed;
         public string fastestRun = null;
 
         public FlashcardSet(string title)
         {
             this._title = title;
+            this._drawPile = new List<Flashcard>();
         }
 
         public void AddFlashcard(Flashcard flash)
@@ -48,10 +50,14 @@ namespace FatalFlashcards
             this._title = newTitle;
         }
 
-        public void SetHighScore(int score)
+        public void SetScore(int score)
         {
             if (score > this.highScore)
+            {
                 this.highScore = score;
+            }
+
+            this.currScore = score;
         }
 
         public void SetFastestRun(int timeElapsed)
