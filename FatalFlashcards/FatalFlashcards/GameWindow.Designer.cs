@@ -47,6 +47,7 @@ namespace FatalFlashcards
             this.prgTime = new System.Windows.Forms.ProgressBar();
             this.lblPoints = new System.Windows.Forms.Label();
             this.lblContinue = new System.Windows.Forms.Label();
+            this.lblRightWrong = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLife)).BeginInit();
             this.pnlAnswerBack.SuspendLayout();
             this.pnlAnswerFront.SuspendLayout();
@@ -134,6 +135,7 @@ namespace FatalFlashcards
             this.lblOptionD.TabIndex = 22;
             this.lblOptionD.Text = "Answer D";
             this.lblOptionD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblOptionD.Click += new System.EventHandler(this.Answer_Click);
             // 
             // lblOptionC
             // 
@@ -146,6 +148,7 @@ namespace FatalFlashcards
             this.lblOptionC.TabIndex = 21;
             this.lblOptionC.Text = "Answer C";
             this.lblOptionC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblOptionC.Click += new System.EventHandler(this.Answer_Click);
             // 
             // lblOptionB
             // 
@@ -158,6 +161,7 @@ namespace FatalFlashcards
             this.lblOptionB.TabIndex = 20;
             this.lblOptionB.Text = "Answer B";
             this.lblOptionB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblOptionB.Click += new System.EventHandler(this.Answer_Click);
             // 
             // lblOptionA
             // 
@@ -170,6 +174,7 @@ namespace FatalFlashcards
             this.lblOptionA.TabIndex = 19;
             this.lblOptionA.Text = "Answer A";
             this.lblOptionA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblOptionA.Click += new System.EventHandler(this.Answer_Click);
             // 
             // lblD
             // 
@@ -244,13 +249,26 @@ namespace FatalFlashcards
             // lblContinue
             // 
             this.lblContinue.Font = new System.Drawing.Font("Courier New", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblContinue.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblContinue.ForeColor = System.Drawing.Color.Gold;
             this.lblContinue.Location = new System.Drawing.Point(1151, 246);
             this.lblContinue.Name = "lblContinue";
             this.lblContinue.Size = new System.Drawing.Size(339, 49);
             this.lblContinue.TabIndex = 23;
             this.lblContinue.Text = " Next Card >";
             this.lblContinue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblContinue.Click += new System.EventHandler(this.lblContinue_Click);
+            // 
+            // lblRightWrong
+            // 
+            this.lblRightWrong.Font = new System.Drawing.Font("Courier New", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblRightWrong.ForeColor = System.Drawing.Color.Red;
+            this.lblRightWrong.Location = new System.Drawing.Point(400, 192);
+            this.lblRightWrong.Name = "lblRightWrong";
+            this.lblRightWrong.Size = new System.Drawing.Size(800, 105);
+            this.lblRightWrong.TabIndex = 24;
+            this.lblRightWrong.Text = "Incorrect";
+            this.lblRightWrong.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRightWrong.Visible = false;
             // 
             // GameWindow
             // 
@@ -258,6 +276,7 @@ namespace FatalFlashcards
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowText;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.lblRightWrong);
             this.Controls.Add(this.lblPoints);
             this.Controls.Add(this.prgTime);
             this.Controls.Add(this.pnlAnswerBack);
@@ -297,5 +316,6 @@ namespace FatalFlashcards
         private System.Windows.Forms.Label lblOptionC;
         private System.Windows.Forms.Label lblOptionB;
         private System.Windows.Forms.Label lblContinue;
+        private System.Windows.Forms.Label lblRightWrong;
     }
 }

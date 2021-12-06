@@ -15,7 +15,7 @@ namespace FatalFlashcards
         private string _WrongAnswer2;
         private string _WrongAnswer3;
 
-        private List<string> _AllAnswers;
+        public List<string> _AllAnswers;
 
         public Flashcard(string line)
         {
@@ -49,6 +49,19 @@ namespace FatalFlashcards
                 //add the stored answer to the second position
                 _AllAnswers[position2] = answer;
             }
+        }
+
+        public bool CorrectAnswer(string answer)
+        {
+            if (answer == this._CorrectAnswer)
+                return true;
+            else
+                return false;
+        }
+
+        public string GetQuestion()
+        {
+            return this._Question;
         }
     }
 }

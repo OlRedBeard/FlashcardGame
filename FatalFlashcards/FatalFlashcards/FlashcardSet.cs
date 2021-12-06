@@ -73,7 +73,7 @@ namespace FatalFlashcards
             }
         }
 
-        public Flashcard DealCard()
+        public Flashcard DrawCard()
         {
             Flashcard tmp = null;
 
