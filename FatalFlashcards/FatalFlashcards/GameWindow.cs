@@ -25,8 +25,11 @@ namespace FatalFlashcards
             deck = set;
             gs = settings;
             previousForm = menu;
+            int lives = deck._flashcards.Count / 2;
+            if (lives > 50)
+                lives = 50;
 
-            this._Lives = deck._flashcards.Count / 2;
+            gs.SetLives(lives);
 
             if (this._Lives > 50)
                 this._Lives = 50;
@@ -116,8 +119,8 @@ namespace FatalFlashcards
                 lblRightWrong.Visible = true;
                 lblRightWrong.ForeColor = Color.Red;
                 lblRightWrong.Text = "Incorrect!";
-                this._Lives -= 1;
-                lblLives.Text = this._Lives.ToString();
+                gs.LoseLife();
+                lblLives.Text = gs.GetLives().ToString();
             }
 
             lblQuestion.Visible = false;
