@@ -146,6 +146,8 @@ namespace FatalFlashcards
             this.lblStats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblStats.Visible = false;
             this.lblStats.Click += new System.EventHandler(this.lblStats_Click);
+            this.lblStats.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblStats.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblWinLose
             // 

@@ -63,6 +63,7 @@ namespace FatalFlashcards
 
         public void SetFastestRun(int timeElapsed)
         {
+            //this is still firing even if the new time is longer than before
             if (timeElapsed < this.shortestTimeElapsed || this.shortestTimeElapsed == 0)
             {
                 if (timeElapsed > 60)
@@ -70,11 +71,15 @@ namespace FatalFlashcards
                     int minutes = timeElapsed / 60;
                     int seconds = timeElapsed % 60;
                     this.fastestRun = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                    this.timeRun = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                    this.shortestTimeElapsed = timeElapsed;
                 }
                 else
                 {
                     int seconds = timeElapsed;
                     this.fastestRun = "00:" + seconds.ToString("D2");
+                    this.timeRun = "00:" + seconds.ToString("D2");
+                    this.shortestTimeElapsed = timeElapsed;
                 }
             }
             else
@@ -82,12 +87,14 @@ namespace FatalFlashcards
                 int minutes = timeElapsed / 60;
                 int seconds = timeElapsed % 60;
 
-                this.timeRun = minutes.ToString() + ":" + seconds.ToString();
+                this.timeRun = minutes.ToString("D2") + ":" + seconds.ToString("D2");
             }
         }
 
         public void PrepCards()
         {
+            this._drawPile.Clear();
+
             foreach (Flashcard card in this._flashcards)
             {
                 this._drawPile.Add(card);
@@ -124,7 +131,9 @@ namespace FatalFlashcards
 
         public void RestockCards()
         {
+            //something is not right here, the done pile is growing
             _donePile.Clear();
+            _drawPile.Clear();
         }
     }
 }

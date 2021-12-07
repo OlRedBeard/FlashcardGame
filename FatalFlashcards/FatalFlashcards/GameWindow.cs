@@ -21,6 +21,11 @@ namespace FatalFlashcards
         GameSettings gs;
         GameMenuLarge previousForm;
         private int _Score;
+        //win/lose data
+        string runTime = "N/A";
+        bool gotHighScore = false;
+        bool gotBestSpeed = false;
+        decimal percentage;
 
         public GameWindow(GameSettings settings, GameMenuLarge menu, FlashcardSet set)
         {
@@ -96,7 +101,9 @@ namespace FatalFlashcards
                 lblWinLose.Text = "You Died.";
                 lblStats.Visible = true;
 
-                deck.RestockCards();
+                percentage = ((decimal)deck._donePile.Count / (decimal)deck._flashcards.Count) * 100;
+
+                runTime = "N/A";
 
                 //save game settings for next time
                 using (Stream stream = File.Open("settings.bin", FileMode.Create))
@@ -104,6 +111,15 @@ namespace FatalFlashcards
                     BinaryFormatter bin = new BinaryFormatter();
                     bin.Serialize(stream, gs);
                 }
+
+                if (deck.currScore == deck.highScore)
+                    gotHighScore = true;
+                else
+                    gotHighScore = false;
+
+                deck.currScore = 0;
+
+                deck.RestockCards();
             }
             else if (deck._drawPile.Count <= 0)
             {
@@ -124,7 +140,7 @@ namespace FatalFlashcards
                 lblStats.Visible = true;
                 deck.SetFastestRun(Convert.ToInt32(stopwatch.ElapsedMilliseconds / 1000));
 
-                deck.RestockCards();
+                runTime = deck.timeRun;
 
                 //save game settings for next time
                 using (Stream stream = File.Open("settings.bin", FileMode.Create))
@@ -132,6 +148,20 @@ namespace FatalFlashcards
                     BinaryFormatter bin = new BinaryFormatter();
                     bin.Serialize(stream, gs);
                 }
+
+                if (deck.currScore == deck.highScore)
+                    gotHighScore = true;
+
+                percentage = 100;
+
+                if (deck.timeRun == deck.fastestRun)
+                    gotBestSpeed = true;
+                else
+                    gotBestSpeed = false;
+
+                deck.currScore = 0;
+
+                deck.RestockCards();
             }
             else
             {
@@ -209,7 +239,8 @@ namespace FatalFlashcards
 
         private void lblStats_Click(object sender, EventArgs e)
         {
-
+            GameStats stats = new GameStats(this, _Score, runTime, percentage, gotHighScore, gotBestSpeed);
+            stats.ShowDialog();
         }
 
         private void HoverText(object sender, EventArgs e)
