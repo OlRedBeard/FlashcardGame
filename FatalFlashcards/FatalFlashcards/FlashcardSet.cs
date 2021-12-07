@@ -19,7 +19,8 @@ namespace FatalFlashcards
         public int highScore;
         public int currScore;
         public int shortestTimeElapsed;
-        public string fastestRun = null;
+        public string fastestRun;
+        public string timeRun;
 
         public FlashcardSet(string title)
         {
@@ -62,12 +63,26 @@ namespace FatalFlashcards
 
         public void SetFastestRun(int timeElapsed)
         {
-            if (timeElapsed < this.shortestTimeElapsed)
+            if (timeElapsed < this.shortestTimeElapsed || this.shortestTimeElapsed == 0)
+            {
+                if (timeElapsed > 60)
+                {
+                    int minutes = timeElapsed / 60;
+                    int seconds = timeElapsed % 60;
+                    this.fastestRun = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+                }
+                else
+                {
+                    int seconds = timeElapsed;
+                    this.fastestRun = "00:" + seconds.ToString("D2");
+                }
+            }
+            else
             {
                 int minutes = timeElapsed / 60;
                 int seconds = timeElapsed % 60;
 
-                this.fastestRun = minutes.ToString() + ":" + seconds.ToString();
+                this.timeRun = minutes.ToString() + ":" + seconds.ToString();
             }
         }
 
@@ -105,6 +120,11 @@ namespace FatalFlashcards
         public override string ToString()
         {
             return this._title;
+        }
+
+        public void RestockCards()
+        {
+            _donePile.Clear();
         }
     }
 }

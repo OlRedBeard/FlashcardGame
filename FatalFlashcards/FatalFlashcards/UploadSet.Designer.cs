@@ -69,6 +69,8 @@ namespace FatalFlashcards
             this.lblConfirm.Text = "Confirm";
             this.lblConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblConfirm.Click += new System.EventHandler(this.lblConfirm_Click);
+            this.lblConfirm.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblConfirm.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblCancel
             // 
@@ -82,6 +84,8 @@ namespace FatalFlashcards
             this.lblCancel.Text = "Cancel";
             this.lblCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCancel.Click += new System.EventHandler(this.lblCancel_Click);
+            this.lblCancel.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblCancel.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblFilepath
             // 

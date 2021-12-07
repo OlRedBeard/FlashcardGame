@@ -18,6 +18,11 @@ namespace FatalFlashcards
             this._Sound = sound;
         }
 
+        public void SetSound(bool soundOn)
+        {
+            this._Sound = soundOn;
+        }
+
         public bool getSound()
         {
             return this._Sound;

@@ -63,5 +63,10 @@ namespace FatalFlashcards
         {
             return this._Question;
         }
+
+        public string GetCorrectAnswer()
+        {
+            return this._CorrectAnswer;
+        }
     }
 }

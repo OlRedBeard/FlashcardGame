@@ -32,7 +32,7 @@ namespace FatalFlashcards
                 BinaryFormatter bin = new BinaryFormatter();
                 bin.Serialize(stream, gs);
                 //for testing
-                MessageBox.Show("Game Settings Saved");
+                //MessageBox.Show("Game Settings Saved");
             }
 
             if (settings.decks != null)
@@ -59,9 +59,12 @@ namespace FatalFlashcards
                     lblBestSpeed.Visible = true;
                     lblSpeed.Visible = true;
                     if (set.fastestRun != null)
-                        lblSpeed.Text = "NOT COMPLETE";
+                        lblSpeed.Text = set.fastestRun;
                     else
                         lblSpeed.Text = "N/A";
+
+                    if (set._donePile.Count > 0)
+                        lblPlay.Text = "Continue";
                 }
                 else
                 {
@@ -77,13 +80,11 @@ namespace FatalFlashcards
         private void lblClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            //previousFrm.Show();
         }
 
         private void lblQuit_Click(object sender, EventArgs e)
         {
             this.Close();
-            //previousFrm.Close();
         }
 
         private void lblAddCards_Click(object sender, EventArgs e)
@@ -126,6 +127,15 @@ namespace FatalFlashcards
 
                 lblBestSpeed.Visible = true;
                 lblSpeed.Visible = true;
+                if (set.fastestRun != null)
+                    lblSpeed.Text = set.fastestRun;
+                else
+                    lblSpeed.Text = "N/A";
+
+                if (set._donePile.Count > 0)
+                    lblPlay.Text = "Continue";
+                else
+                    lblPlay.Text = "Begin";
             }
             catch (Exception ex)
             {
@@ -139,6 +149,36 @@ namespace FatalFlashcards
             this.Hide();
             GameWindow game = new GameWindow(gs, this, set);
             game.ShowDialog();
+            this.Show();
+
+            if (cboCardSet.SelectedItem != null)
+            {
+                set = (FlashcardSet)cboCardSet.SelectedItem;
+
+                lblBestPoints.Visible = true;
+                lblPoints.Visible = true;
+                if (set.highScore > 0)
+                    lblPoints.Text = set.highScore.ToString();
+                else
+                    lblPoints.Text = "N/A";
+
+                lblBestSpeed.Visible = true;
+                lblSpeed.Visible = true;
+                if (set.fastestRun != null)
+                    lblSpeed.Text = set.fastestRun;
+                else
+                    lblSpeed.Text = "N/A";
+
+                if (set._donePile.Count > 0)
+                    lblPlay.Text = "Continue";
+            }
+            else
+            {
+                lblBestPoints.Visible = false;
+                lblPoints.Visible = false;
+                lblBestSpeed.Visible = false;
+                lblSpeed.Visible = false;
+            }
         }
 
         private void HoverText(object sender, EventArgs e)

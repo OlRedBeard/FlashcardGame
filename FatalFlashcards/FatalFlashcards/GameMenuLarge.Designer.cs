@@ -55,6 +55,8 @@ namespace FatalFlashcards
             this.lblClose.Text = "X";
             this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            this.lblClose.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblClose.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblFlashcards
             // 

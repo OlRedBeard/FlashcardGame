@@ -57,5 +57,17 @@ namespace FatalFlashcards
         {
             this.Close();
         }
+
+        private void HoverText(object sender, EventArgs e)
+        {
+            Label tmp = (Label)sender;
+            tmp.ForeColor = Color.Red;
+        }
+
+        private void LeaveText(object sender, EventArgs e)
+        {
+            Label tmp = (Label)sender;
+            tmp.ForeColor = Color.White;
+        }
     }
 }

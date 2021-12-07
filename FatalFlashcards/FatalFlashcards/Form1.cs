@@ -38,7 +38,7 @@ namespace FatalFlashcards
                     gameSound = gs.getSound();
                     isLarge = gs.getSize();
                     //for testing
-                    MessageBox.Show("Game Settings Loaded");
+                    //MessageBox.Show("Game Settings Loaded");
                 }
             }
 
@@ -59,11 +59,13 @@ namespace FatalFlashcards
             if (isLarge)
             {
                 this.Hide();
+                gs.SetSound(gameSound);
                 gs.MakeGame_Large();
             }
             else
             {
                 this.Hide();
+                gs.SetSound(gameSound);
                 gs.MakeGame_Small();
             }
 
