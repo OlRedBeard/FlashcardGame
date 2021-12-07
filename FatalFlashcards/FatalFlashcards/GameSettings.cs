@@ -9,7 +9,6 @@ namespace FatalFlashcards
     {
         private bool _Sound;
         private bool _Large;
-        private int _Lives;
         //private Form1 _previousFrm;
         public List<FlashcardSet> decks = new List<FlashcardSet>();
 
@@ -48,21 +47,6 @@ namespace FatalFlashcards
         public void AddSet(FlashcardSet tmp)
         {
             decks.Add(tmp);
-        }
-
-        public int GetLives()
-        {
-            return this._Lives;
-        }
-
-        public void SetLives(int num)
-        {
-            this._Lives = num;
-        }
-
-        public void LoseLife()
-        {
-            this._Lives -= 1;
         }
     }
 }

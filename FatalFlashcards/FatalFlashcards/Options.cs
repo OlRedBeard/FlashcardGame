@@ -17,6 +17,11 @@ namespace FatalFlashcards
             InitializeComponent();
 
             previousForm = frm;
+
+            if (previousForm.gameSound)
+                lblSoundStat.Text = "On";
+            else
+                lblSoundStat.Text = "Off";
         }
 
         private void lblClose_Click(object sender, EventArgs e)
@@ -28,7 +33,7 @@ namespace FatalFlashcards
         private void lblSizeRight_Click(object sender, EventArgs e)
         {
             if (lblSize.Text == "1600 x 900")
-                lblSize.Text = "800 x 600";
+                lblSize.Text = "800 x 450";
             else
                 lblSize.Text = "1600 x 900";
         }

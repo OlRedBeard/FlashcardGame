@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.IO;
 //binary formatter
 using System.Runtime.Serialization.Formatters.Binary;
+//media
+using System.Media;
 
 namespace FatalFlashcards
 {
@@ -18,6 +20,9 @@ namespace FatalFlashcards
         //Form1 previousFrm;
         GameSettings gs;
         FlashcardSet set;
+
+        //sound settings
+        SoundPlayer sp;
 
         public GameMenuLarge(GameSettings settings)//, Form1 frm)
         {
@@ -33,6 +38,14 @@ namespace FatalFlashcards
                 bin.Serialize(stream, gs);
                 //for testing
                 //MessageBox.Show("Game Settings Saved");
+            }
+
+            //system media method
+            if (sound)
+            {
+                sp = new SoundPlayer();
+                sp.SoundLocation = "ambient horror.wav";
+                sp.PlayLooping();
             }
 
             if (settings.decks != null)
@@ -79,11 +92,17 @@ namespace FatalFlashcards
 
         private void lblClose_Click(object sender, EventArgs e)
         {
+            if (sp != null)
+                sp.Stop();
+
             this.Close();
         }
 
         private void lblQuit_Click(object sender, EventArgs e)
         {
+            if (sp != null)
+                sp.Stop();
+
             this.Close();
         }
 
@@ -140,16 +159,21 @@ namespace FatalFlashcards
             catch (Exception ex)
             {
                 //for testing
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
             }
         }
 
         private void lblPlay_Click(object sender, EventArgs e)
         {
             this.Hide();
+            if (sp != null)
+                sp.Stop();
             GameWindow game = new GameWindow(gs, this, set);
             game.ShowDialog();
             this.Show();
+
+            if (sound)
+                sp.PlayLooping();
 
             if (cboCardSet.SelectedItem != null)
             {

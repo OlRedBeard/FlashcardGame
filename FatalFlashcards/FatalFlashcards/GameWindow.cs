@@ -10,6 +10,11 @@ using System.Windows.Forms;
 using System.IO;
 //binary formatter
 using System.Runtime.Serialization.Formatters.Binary;
+//sound settings
+using System.Media;
+//sound plugin
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace FatalFlashcards
 {
@@ -25,7 +30,17 @@ namespace FatalFlashcards
         string runTime = "N/A";
         bool gotHighScore = false;
         bool gotBestSpeed = false;
+        decimal tmpPercentage;
         decimal percentage;
+        //sound settings
+        SoundPlayer correct;
+        SoundPlayer incorrect;
+        SoundPlayer win;
+        SoundPlayer lose;
+        //background sound settings
+        private WaveOutEvent outputDevice;
+        private AudioFileReader audioFile;
+        bool stopSound = false;
 
         public GameWindow(GameSettings settings, GameMenuLarge menu, FlashcardSet set)
         {
@@ -33,14 +48,32 @@ namespace FatalFlashcards
             deck = set;
             gs = settings;
             previousForm = menu;
-            int lives = deck._flashcards.Count / 2;
-            if (lives > 50)
-                lives = 50;
 
-            //for testing
-            //lives = 3;
+            if (gs.getSound())
+            {
+                correct = new SoundPlayer();
+                correct.SoundLocation = "Right.wav";
+                incorrect = new SoundPlayer();
+                incorrect.SoundLocation = "Wrong.wav";
+                win = new SoundPlayer();
+                win.SoundLocation = "Victory.wav";
+                lose = new SoundPlayer();
+                lose.SoundLocation = "Failure.wav";
 
-            gs.SetLives(lives);
+                //nAudio sounds
+                if (outputDevice == null)
+                {
+                    outputDevice = new WaveOutEvent();
+                    outputDevice.PlaybackStopped += OnPlaybackStopped;
+                }
+
+                if (audioFile == null)
+                {
+                    audioFile = new AudioFileReader("heartbeat.wav");
+                    outputDevice.Init(audioFile);
+                }
+                outputDevice.Play();
+            }
 
             if (deck._drawPile == null || deck._drawPile.Count <= 0)
             {
@@ -51,9 +84,15 @@ namespace FatalFlashcards
 
                 deck.ShuffleCards(deck._flashcards);
                 deck.PrepCards();
+
+                int lives = deck._flashcards.Count / 2;
+                if (lives > 50)
+                    lives = 50;
+
+                deck.SetLives(lives);
             }
 
-            lblLives.Text = gs.GetLives().ToString();
+            lblLives.Text = deck.GetLives().ToString();
 
             lblQuestion.Text = "Click 'Ready' below to begin.";
             //question answer labels
@@ -70,6 +109,31 @@ namespace FatalFlashcards
             lblContinue.Visible = true;
         }
 
+        //nAudio method
+        private void OnPlaybackStopped(object sender, StoppedEventArgs args)
+        {
+            outputDevice.Dispose();
+            outputDevice = null;
+            audioFile.Dispose();
+            audioFile = null;
+
+            if (!stopSound)
+            {
+                if (outputDevice == null)
+                {
+                    outputDevice = new WaveOutEvent();
+                    outputDevice.PlaybackStopped += OnPlaybackStopped;
+                }
+
+                if (audioFile == null)
+                {
+                    audioFile = new AudioFileReader("heartbeat.wav");
+                    outputDevice.Init(audioFile);
+                }
+                outputDevice.Play();
+            }
+        }
+
         private void lblContinue_Click(object sender, EventArgs e)
         {
             stopwatch.Start();
@@ -83,8 +147,11 @@ namespace FatalFlashcards
                 lblContinue.Text = "Next Card >";
             }
 
-            if (gs.GetLives() == 0)
+            if (deck.GetLives() == 0)
             {
+                if (gs.getSound())
+                    lose.Play();
+
                 lblQuestion.Visible = false;
                 lblA.Visible = false;
                 lblB.Visible = false;
@@ -101,16 +168,10 @@ namespace FatalFlashcards
                 lblWinLose.Text = "You Died.";
                 lblStats.Visible = true;
 
-                percentage = ((decimal)deck._donePile.Count / (decimal)deck._flashcards.Count) * 100;
+                tmpPercentage = ((decimal)deck._donePile.Count / (decimal)deck._flashcards.Count) * 100;
+                percentage = Math.Round(tmpPercentage, 0);
 
                 runTime = "N/A";
-
-                //save game settings for next time
-                using (Stream stream = File.Open("settings.bin", FileMode.Create))
-                {
-                    BinaryFormatter bin = new BinaryFormatter();
-                    bin.Serialize(stream, gs);
-                }
 
                 if (deck.currScore == deck.highScore)
                     gotHighScore = true;
@@ -120,9 +181,19 @@ namespace FatalFlashcards
                 deck.currScore = 0;
 
                 deck.RestockCards();
+
+                //save game settings for next time
+                using (Stream stream = File.Open("settings.bin", FileMode.Create))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, gs);
+                }
             }
             else if (deck._drawPile.Count <= 0)
             {
+                if (gs.getSound())
+                    win.Play();
+
                 lblQuestion.Visible = false;
                 lblA.Visible = false;
                 lblB.Visible = false;
@@ -142,13 +213,6 @@ namespace FatalFlashcards
 
                 runTime = deck.timeRun;
 
-                //save game settings for next time
-                using (Stream stream = File.Open("settings.bin", FileMode.Create))
-                {
-                    BinaryFormatter bin = new BinaryFormatter();
-                    bin.Serialize(stream, gs);
-                }
-
                 if (deck.currScore == deck.highScore)
                     gotHighScore = true;
 
@@ -162,6 +226,13 @@ namespace FatalFlashcards
                 deck.currScore = 0;
 
                 deck.RestockCards();
+
+                //save game settings for next time
+                using (Stream stream = File.Open("settings.bin", FileMode.Create))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, gs);
+                }
             }
             else
             {
@@ -200,6 +271,8 @@ namespace FatalFlashcards
                 this._Score += 50 + prgTime.Value;
                 lblPoints.Text = this._Score.ToString();
                 deck.SetScore(this._Score);
+                if (gs.getSound())
+                    correct.Play();
             }
             else
             {
@@ -208,11 +281,22 @@ namespace FatalFlashcards
                 lblCorrect.Text = "Correct answer was: " + currQues.GetCorrectAnswer();
                 lblRightWrong.ForeColor = Color.Red;
                 lblRightWrong.Text = "Incorrect!";
-                gs.LoseLife();
-                lblLives.Text = gs.GetLives().ToString();
+                deck.LoseLife();
+                lblLives.Text = deck.GetLives().ToString();
+                if (gs.getSound())
+                    incorrect.Play();
             }
 
             lblQuestion.Visible = false;
+            lblA.Visible = false;
+            lblB.Visible = false;
+            lblC.Visible = false;
+            lblD.Visible = false;
+            lblOptionA.Visible = false;
+            lblOptionB.Visible = false;
+            lblOptionC.Visible = false;
+            lblOptionD.Visible = false;
+
             lblContinue.Visible = true;
             timer1.Enabled = false;
             prgTime.Value = 450;
@@ -234,11 +318,15 @@ namespace FatalFlashcards
 
         private void lblClose_Click(object sender, EventArgs e)
         {
+            stopSound = true;
+            outputDevice?.Stop();
             this.Close();
         }
 
         private void lblStats_Click(object sender, EventArgs e)
         {
+            stopSound = true;
+            outputDevice?.Stop();
             GameStats stats = new GameStats(this, _Score, runTime, percentage, gotHighScore, gotBestSpeed);
             stats.ShowDialog();
         }

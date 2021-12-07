@@ -21,6 +21,7 @@ namespace FatalFlashcards
         public int shortestTimeElapsed;
         public string fastestRun;
         public string timeRun;
+        public int numLives;
 
         public FlashcardSet(string title)
         {
@@ -134,6 +135,21 @@ namespace FatalFlashcards
             //something is not right here, the done pile is growing
             _donePile.Clear();
             _drawPile.Clear();
+        }
+
+        public int GetLives()
+        {
+            return this.numLives;
+        }
+
+        public void SetLives(int num)
+        {
+            this.numLives = num;
+        }
+
+        public void LoseLife()
+        {
+            this.numLives -= 1;
         }
     }
 }
