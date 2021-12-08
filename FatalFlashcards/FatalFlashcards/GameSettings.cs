@@ -42,6 +42,8 @@ namespace FatalFlashcards
         public void MakeGame_Small()
         {
             this._Large = false;
+            GameMenuSmall menu = new GameMenuSmall(this);
+            menu.ShowDialog();
         }
 
         public void AddSet(FlashcardSet tmp)

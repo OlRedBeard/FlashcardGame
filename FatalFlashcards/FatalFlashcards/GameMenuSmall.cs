@@ -14,7 +14,7 @@ using System.Media;
 
 namespace FatalFlashcards
 {
-    public partial class GameMenuLarge : Form
+    public partial class GameMenuSmall : Form
     {
         public bool sound;
         //Form1 previousFrm;
@@ -24,7 +24,7 @@ namespace FatalFlashcards
         //sound settings
         SoundPlayer sp;
 
-        public GameMenuLarge(GameSettings settings)//, Form1 frm)
+        public GameMenuSmall(GameSettings settings)
         {
             InitializeComponent();
             sound = settings.getSound();
@@ -87,7 +87,37 @@ namespace FatalFlashcards
                     lblSpeed.Visible = false;
                 }
             }
+        }
 
+        private void cboCardSet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                set = (FlashcardSet)cboCardSet.SelectedItem;
+                lblBestPoints.Visible = true;
+                lblPoints.Visible = true;
+                if (set.highScore > 0)
+                    lblPoints.Text = set.highScore.ToString();
+                else
+                    lblPoints.Text = "N/A";
+
+                lblBestSpeed.Visible = true;
+                lblSpeed.Visible = true;
+                if (set.fastestRun != null)
+                    lblSpeed.Text = set.fastestRun;
+                else
+                    lblSpeed.Text = "N/A";
+
+                if (set._donePile.Count > 0)
+                    lblPlay.Text = "Continue";
+                else
+                    lblPlay.Text = "Begin";
+            }
+            catch (Exception ex)
+            {
+                //for testing
+                //MessageBox.Show(ex.ToString());
+            }
         }
 
         private void lblClose_Click(object sender, EventArgs e)
@@ -132,44 +162,13 @@ namespace FatalFlashcards
             }
         }
 
-        private void cboCardSet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                set = (FlashcardSet)cboCardSet.SelectedItem;
-                lblBestPoints.Visible = true;
-                lblPoints.Visible = true;
-                if (set.highScore > 0)
-                    lblPoints.Text = set.highScore.ToString();
-                else
-                    lblPoints.Text = "N/A";
-
-                lblBestSpeed.Visible = true;
-                lblSpeed.Visible = true;
-                if (set.fastestRun != null)
-                    lblSpeed.Text = set.fastestRun;
-                else
-                    lblSpeed.Text = "N/A";
-
-                if (set._donePile.Count > 0)
-                    lblPlay.Text = "Continue";
-                else
-                    lblPlay.Text = "Begin";
-            }
-            catch (Exception ex)
-            {
-                //for testing
-                //MessageBox.Show(ex.ToString());
-            }
-        }
-
         private void lblPlay_Click(object sender, EventArgs e)
         {
             this.Hide();
             if (sp != null)
                 sp.Stop();
-            GameWindow game = new GameWindow(gs, this, set);
-            game.ShowDialog();
+            //GameWindowSmall game = new GameWindowSmall(gs, this, set);
+            //game.ShowDialog();
             this.Show();
 
             if (sound)
@@ -205,6 +204,12 @@ namespace FatalFlashcards
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            UploadTutorial tut = new UploadTutorial();
+            tut.ShowDialog();
+        }
+
         private void HoverText(object sender, EventArgs e)
         {
             Label tmp = (Label)sender;
@@ -215,12 +220,6 @@ namespace FatalFlashcards
         {
             Label tmp = (Label)sender;
             tmp.ForeColor = Color.White;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            UploadTutorial tut = new UploadTutorial();
-            tut.ShowDialog();
         }
     }
 }

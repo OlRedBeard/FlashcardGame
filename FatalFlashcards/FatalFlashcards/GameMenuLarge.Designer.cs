@@ -123,6 +123,7 @@ namespace FatalFlashcards
             this.label1.TabIndex = 11;
             this.label1.Text = "How to Upload Sets";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             this.label1.MouseLeave += new System.EventHandler(this.LeaveText);
             this.label1.MouseHover += new System.EventHandler(this.HoverText);
             // 
