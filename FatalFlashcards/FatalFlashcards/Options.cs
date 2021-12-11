@@ -22,6 +22,11 @@ namespace FatalFlashcards
                 lblSoundStat.Text = "On";
             else
                 lblSoundStat.Text = "Off";
+
+            if (previousForm.isLarge)
+                lblSize.Text = "1600 x 900";
+            else
+                lblSize.Text = "800 x 450";
         }
 
         private void lblClose_Click(object sender, EventArgs e)

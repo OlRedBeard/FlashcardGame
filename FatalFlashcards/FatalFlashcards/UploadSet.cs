@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -30,7 +31,7 @@ namespace FatalFlashcards
 
             if (op.ShowDialog() == DialogResult.OK)
             {
-                lblFilepath.Text = op.FileName;
+                lblFilepath.Text = op.FileName.Split("\\").LastOrDefault();
 
                 fileLines = File.ReadAllLines(op.FileName);
                 foreach (string line in fileLines)

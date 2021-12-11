@@ -113,5 +113,24 @@ namespace FatalFlashcards
         {
             this.Close();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //opens the screen on the secondary monitor (if there is one)
+            Screen[] screens = Screen.AllScreens;
+            if (screens.Length > 1)
+                SetFormLocation(this, screens[1]);
+            else
+                SetFormLocation(this, screens[0]);
+        }
+
+        private void SetFormLocation(Form1 frm, Screen screen)
+        {
+            Point location = screen.Bounds.Location;
+            Size size = screen.Bounds.Size;
+
+            frm.Left = (screen.WorkingArea.Width - this.Width) / 2;
+            frm.Top = (screen.WorkingArea.Height - this.Height) / 2;
+        }
     }
 }

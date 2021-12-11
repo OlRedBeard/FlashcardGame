@@ -88,6 +88,9 @@ namespace FatalFlashcards
             this.lblStats.Text = "View Run Stats";
             this.lblStats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblStats.Visible = false;
+            this.lblStats.Click += new System.EventHandler(this.lblStats_Click);
+            this.lblStats.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblStats.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblWinLose
             // 
@@ -125,6 +128,8 @@ namespace FatalFlashcards
             this.lblOptionD.Text = "Answer D";
             this.lblOptionD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblOptionD.Click += new System.EventHandler(this.Answer_Click);
+            this.lblOptionD.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblOptionD.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblOptionC
             // 
@@ -138,6 +143,8 @@ namespace FatalFlashcards
             this.lblOptionC.Text = "Answer C";
             this.lblOptionC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblOptionC.Click += new System.EventHandler(this.Answer_Click);
+            this.lblOptionC.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblOptionC.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblOptionB
             // 
@@ -151,6 +158,8 @@ namespace FatalFlashcards
             this.lblOptionB.Text = "Answer B";
             this.lblOptionB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblOptionB.Click += new System.EventHandler(this.Answer_Click);
+            this.lblOptionB.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblOptionB.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblOptionA
             // 
@@ -164,6 +173,8 @@ namespace FatalFlashcards
             this.lblOptionA.Text = "Answer A";
             this.lblOptionA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblOptionA.Click += new System.EventHandler(this.Answer_Click);
+            this.lblOptionA.MouseLeave += new System.EventHandler(this.LeaveText);
+            this.lblOptionA.MouseHover += new System.EventHandler(this.HoverText);
             // 
             // lblD
             // 
@@ -337,6 +348,7 @@ namespace FatalFlashcards
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameWindowSmall";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GameWindowSmall";
             this.pnlAnswerFront.ResumeLayout(false);
             this.pnlAnswerFront.PerformLayout();

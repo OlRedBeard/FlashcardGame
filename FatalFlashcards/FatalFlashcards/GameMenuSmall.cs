@@ -76,6 +76,13 @@ namespace FatalFlashcards
                     else
                         lblSpeed.Text = "N/A";
 
+                    lblCorrect.Visible = true;
+                    lblPercentage.Visible = true;
+                    if (set.GetBestPercentage() > 0)
+                        lblPercentage.Text = set.GetBestPercentage().ToString() + "%";
+                    else
+                        lblPercentage.Text = "N/A";
+
                     if (set._donePile.Count > 0)
                         lblPlay.Text = "Continue";
                 }
@@ -85,6 +92,8 @@ namespace FatalFlashcards
                     lblPoints.Visible = false;
                     lblBestSpeed.Visible = false;
                     lblSpeed.Visible = false;
+                    lblCorrect.Visible = false;
+                    lblPercentage.Visible = false;
                 }
             }
         }
@@ -107,6 +116,13 @@ namespace FatalFlashcards
                     lblSpeed.Text = set.fastestRun;
                 else
                     lblSpeed.Text = "N/A";
+
+                lblCorrect.Visible = true;
+                lblPercentage.Visible = true;
+                if (set.GetBestPercentage() > 0)
+                    lblPercentage.Text = set.GetBestPercentage().ToString() + "%";
+                else
+                    lblPercentage.Text = "N/A";
 
                 if (set._donePile.Count > 0)
                     lblPlay.Text = "Continue";
@@ -167,8 +183,8 @@ namespace FatalFlashcards
             this.Hide();
             if (sp != null)
                 sp.Stop();
-            //GameWindowSmall game = new GameWindowSmall(gs, this, set);
-            //game.ShowDialog();
+            GameWindowSmall game = new GameWindowSmall(gs, this, set);
+            game.ShowDialog();
             this.Show();
 
             if (sound)

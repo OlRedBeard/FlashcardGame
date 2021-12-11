@@ -41,6 +41,8 @@ namespace FatalFlashcards
             this.label1 = new System.Windows.Forms.Label();
             this.lblAddCards = new System.Windows.Forms.Label();
             this.lblPlay = new System.Windows.Forms.Label();
+            this.lblPercentage = new System.Windows.Forms.Label();
+            this.lblCorrect = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblClose
@@ -202,12 +204,38 @@ namespace FatalFlashcards
             this.lblPlay.MouseLeave += new System.EventHandler(this.LeaveText);
             this.lblPlay.MouseHover += new System.EventHandler(this.HoverText);
             // 
+            // lblPercentage
+            // 
+            this.lblPercentage.AutoSize = true;
+            this.lblPercentage.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblPercentage.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblPercentage.Location = new System.Drawing.Point(12, 224);
+            this.lblPercentage.Name = "lblPercentage";
+            this.lblPercentage.Size = new System.Drawing.Size(58, 18);
+            this.lblPercentage.TabIndex = 29;
+            this.lblPercentage.Text = "59:59";
+            this.lblPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCorrect
+            // 
+            this.lblCorrect.AutoSize = true;
+            this.lblCorrect.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCorrect.ForeColor = System.Drawing.Color.Gold;
+            this.lblCorrect.Location = new System.Drawing.Point(12, 194);
+            this.lblCorrect.Name = "lblCorrect";
+            this.lblCorrect.Size = new System.Drawing.Size(138, 18);
+            this.lblCorrect.TabIndex = 28;
+            this.lblCorrect.Text = "Most Correct:";
+            this.lblCorrect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // GameMenuSmall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblPercentage);
+            this.Controls.Add(this.lblCorrect);
             this.Controls.Add(this.lblQuit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -222,7 +250,7 @@ namespace FatalFlashcards
             this.Controls.Add(this.lblClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameMenuSmall";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GameMenuSmall";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -243,5 +271,7 @@ namespace FatalFlashcards
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblAddCards;
         private System.Windows.Forms.Label lblPlay;
+        private System.Windows.Forms.Label lblPercentage;
+        private System.Windows.Forms.Label lblCorrect;
     }
 }

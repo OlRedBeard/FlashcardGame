@@ -30,8 +30,7 @@ namespace FatalFlashcards
         string runTime = "N/A";
         bool gotHighScore = false;
         bool gotBestSpeed = false;
-        decimal tmpPercentage;
-        decimal percentage;
+        int percentage;
         //sound settings
         SoundPlayer correct;
         SoundPlayer incorrect;
@@ -168,8 +167,7 @@ namespace FatalFlashcards
                 lblWinLose.Text = "You Died.";
                 lblStats.Visible = true;
 
-                tmpPercentage = ((decimal)deck._donePile.Count / (decimal)deck._flashcards.Count) * 100;
-                percentage = Math.Round(tmpPercentage, 0);
+                percentage = deck.GetPercentage();
 
                 runTime = "N/A";
 
@@ -216,7 +214,7 @@ namespace FatalFlashcards
                 if (deck.currScore == deck.highScore)
                     gotHighScore = true;
 
-                percentage = 100;
+                percentage = deck.GetPercentage();
 
                 if (deck.timeRun == deck.fastestRun)
                     gotBestSpeed = true;
@@ -271,6 +269,7 @@ namespace FatalFlashcards
                 this._Score += 50 + prgTime.Value;
                 lblPoints.Text = this._Score.ToString();
                 deck.SetScore(this._Score);
+                deck.CorrectAnswer();
                 if (gs.getSound())
                     correct.Play();
             }

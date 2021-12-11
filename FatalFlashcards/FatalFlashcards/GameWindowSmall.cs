@@ -24,7 +24,7 @@ namespace FatalFlashcards
         Flashcard currQues = null;
         Stopwatch stopwatch = new Stopwatch();
         GameSettings gs;
-        GameMenuLarge previousForm;
+        GameMenuSmall previousForm;
         private int _Score;
         //win/lose data
         string runTime = "N/A";
@@ -42,7 +42,7 @@ namespace FatalFlashcards
         private AudioFileReader audioFile;
         bool stopSound = false;
 
-        public GameWindowSmall(GameSettings settings, GameMenuLarge menu, FlashcardSet set)
+        public GameWindowSmall(GameSettings settings, GameMenuSmall menu, FlashcardSet set)
         {
             InitializeComponent();
             deck = set;
@@ -321,6 +321,26 @@ namespace FatalFlashcards
             stopSound = true;
             outputDevice?.Stop();
             this.Close();
+        }
+
+        private void lblStats_Click(object sender, EventArgs e)
+        {
+            stopSound = true;
+            outputDevice?.Stop();
+            GameStats stats = new GameStats(this, _Score, runTime, percentage, gotHighScore, gotBestSpeed);
+            stats.ShowDialog();
+        }
+
+        private void LeaveText(object sender, EventArgs e)
+        {
+            Label tmp = (Label)sender;
+            tmp.ForeColor = Color.White;
+        }
+
+        private void HoverText(object sender, EventArgs e)
+        {
+            Label tmp = (Label)sender;
+            tmp.ForeColor = Color.Red;
         }
     }
 }

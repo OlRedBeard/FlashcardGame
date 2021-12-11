@@ -350,7 +350,7 @@ namespace FatalFlashcards
             this.ForeColor = System.Drawing.SystemColors.Window;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GameWindow";
             ((System.ComponentModel.ISupportInitialize)(this.picLife)).EndInit();
             this.pnlAnswerBack.ResumeLayout(false);

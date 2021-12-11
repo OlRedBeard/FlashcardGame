@@ -22,10 +22,15 @@ namespace FatalFlashcards
         public string fastestRun;
         public string timeRun;
         public int numLives;
+        public decimal correctAnswers;
+        public decimal totalCards;
+        public decimal percentageCorrect;
+        public int bestPercentage;
 
         public FlashcardSet(string title)
         {
             this._title = title;
+            this.bestPercentage = 0;
             this._drawPile = new List<Flashcard>();
         }
 
@@ -38,8 +43,8 @@ namespace FatalFlashcards
         {
             for(int i = 0; i < 10000; i++)
             {
-                int position1 = rnd.Next(1, this._flashcards.Count);
-                int position2 = rnd.Next(1, this._flashcards.Count);
+                int position1 = rnd.Next(0, this._flashcards.Count);
+                int position2 = rnd.Next(0, this._flashcards.Count);
 
                 Flashcard tmp = this._flashcards[position1];
                 this._flashcards[position1] = this._flashcards[position2];
@@ -100,6 +105,8 @@ namespace FatalFlashcards
             {
                 this._drawPile.Add(card);
             }
+
+            this.totalCards = this._drawPile.Count;
         }
 
         public Flashcard DrawCard()
@@ -135,6 +142,7 @@ namespace FatalFlashcards
             //something is not right here, the done pile is growing
             _donePile.Clear();
             _drawPile.Clear();
+            this.correctAnswers = 0;
         }
 
         public int GetLives()
@@ -150,6 +158,33 @@ namespace FatalFlashcards
         public void LoseLife()
         {
             this.numLives -= 1;
+        }
+
+        public void CorrectAnswer()
+        {
+            this.correctAnswers += 1;
+        }
+
+        public int GetPercentage()
+        {
+            decimal percentage;
+            percentage = (this.correctAnswers / this.totalCards) * 100;
+            int ret = Convert.ToInt32(percentage);
+
+            if (ret > this.bestPercentage)
+                SetBestPercentage(ret);
+
+            return ret;
+        }
+
+        public void SetBestPercentage(int per)
+        {
+            this.bestPercentage = per;
+        }
+
+        public int GetBestPercentage()
+        {
+            return this.bestPercentage;
         }
     }
 }

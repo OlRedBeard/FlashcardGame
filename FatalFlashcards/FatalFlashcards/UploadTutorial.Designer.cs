@@ -119,7 +119,7 @@ namespace FatalFlashcards
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UploadTutorial";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UploadTutorial";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

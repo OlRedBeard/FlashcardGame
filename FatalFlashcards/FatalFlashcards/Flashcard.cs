@@ -39,8 +39,8 @@ namespace FatalFlashcards
         {
             for(int i=0; i<100; i++)
             {
-                int position1 = rnd.Next(_AllAnswers.Count);
-                int position2 = rnd.Next(_AllAnswers.Count);
+                int position1 = rnd.Next(0, _AllAnswers.Count);
+                int position2 = rnd.Next(0, _AllAnswers.Count);
 
                 //hold one answer in memory
                 string answer = _AllAnswers[position1];

@@ -11,6 +11,7 @@ namespace FatalFlashcards
     public partial class GameStats : Form
     {
         GameWindow previousForm;
+        GameWindowSmall prevForm;
 
         public GameStats(GameWindow prev, int points, string time, decimal percentage, bool highScore, bool fastestRun)
         {
@@ -23,10 +24,24 @@ namespace FatalFlashcards
             lblRunTime.Text = time;
         }
 
+        public GameStats(GameWindowSmall prev, int points, string time, decimal percentage, bool highScore, bool fastestRun)
+        {
+            InitializeComponent();
+
+            prevForm = prev;
+            //cannot format this decimal with the tostring or it breaks
+            lblCardsDone.Text = percentage.ToString() + "%";
+            lblPoints.Text = points.ToString();
+            lblRunTime.Text = time;
+        }
+
         private void label7_Click(object sender, EventArgs e)
         {
             this.Close();
-            previousForm.Close();
+            if (previousForm != null)
+                previousForm.Close();
+            else
+                prevForm.Close();
         }
 
         private void label7_MouseHover(object sender, EventArgs e)
